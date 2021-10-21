@@ -6,14 +6,16 @@ import Vue from 'vue'
 import App from './App'
 //import the vue router
 import VueRouter from 'vue-router'
+//Axios 
+import axios from 'axios'
+
+Vue.prototype.$http = axios
 //tell vue to use the router
 Vue.use(VueRouter)
 //define your routes
 
 //import the hello component
 import Hello from './components/HelloWorld'
-//import the Character component
-import Character from './components/Character'
 //import the Races component
 import Races from './components/Races'
 //import the Classes component
@@ -28,8 +30,6 @@ import About from './components/About'
 const routes = [
 //route for the home route of the web page
 { path: '/', component: Hello },
-//route for the Character route of the web page
-{ path: '/character', component: Character },
 //route for the Races route of the web page
 { path: '/races', component: Races },
 //route for the Classes route of the web page

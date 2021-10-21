@@ -1,6 +1,6 @@
 # dungeons_and_dragons
 
-> An API for Dungeons and Dragons 5th edition
+> An SPA for Dungeons and Dragons 5th edition
 
 ## Build Setup
 

@@ -2,7 +2,6 @@
   <div id="app">
   <!-- the router outlet, where all matched components would be viewed -->
   <router-link v-bind:to="'/'">Home</router-link>
-  <router-link v-bind:to="'/Character'">Character Data</router-link>
   <router-link v-bind:to="'/Races'">Races</router-link>
   <router-link v-bind:to="'/Classes'">Classes</router-link>
   <router-link v-bind:to="'/Background'">Backgrounds</router-link>
