@@ -18,14 +18,14 @@ Vue.use(VueRouter)
 import Hello from './components/HelloWorld'
 //import the Races component
 import Races from './components/Races'
+import Racedetails from './components/Racedetails'
 //import the Classes component
 import Classes from './components/Classes'
+import Classdetails from './components/Classdetails'
 //import the Background component
 import Background from './components/Background'
 //import the Spells component
 import Spells from './components/Spells'
-//import the about component
-import About from './components/About'
 //define your routes
 const routes = [
 //route for the home route of the web page
@@ -38,8 +38,20 @@ const routes = [
 { path: '/background', component: Background },
 //route for the Spells route of the web page
 { path: '/spells', component: Spells },
-//route for the about route of the web page
-{ path: '/about', component: About }
+{
+  path: '/racedetails/:id',
+  name: 'details', 
+  id:'races', 
+  props: true,
+  component: Racedetails
+},
+{
+  path: '/classdetails/:id',
+  name: 'roledetails', 
+  id:'class', 
+  props: true,
+  component: Classdetails
+}
 ]
 
 // Create the router instance and pass the `routes` option
