@@ -11,11 +11,12 @@
         <div class="detail_container">
             <h2>Hit Dice: 1d{{ roledetails.hit_die }}</h2>
         </div>
-        <div class="detail_container">
-            <div>
-            <h2>{{ roledetails.proficiencies }}</h2>
-            </div>
-        </div>
+        <ul class="detail_container list_container"> <h3>Saving Throws: </h3>
+          <li v-for="saving_throws in roledetails.saving_throws" v-bind:key="saving_throws.index" class="list_items"><h3>{{ saving_throws.name }},</h3></li>
+        </ul>
+        <ul class="detail_container list_container"> <h3>Class Proficiencies: </h3>
+          <li v-for="proficiencies in roledetails.proficiencies" v-bind:key="proficiencies.index" class="list_items"><h3>{{ proficiencies.name }},</h3></li>
+        </ul>
       </div>
       </div>
   </div>

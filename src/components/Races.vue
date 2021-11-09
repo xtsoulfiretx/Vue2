@@ -3,7 +3,7 @@
     <div id="Title">
       <h1>Races</h1>
     </div>
-    <h2>Total Races: 9</h2>
+    <h2>Total Races: {{ races.length }}</h2>
     <div class="Race_list">
       <div class="Race" v-for="race, index in races" v-bind:key="index">
         <h3 class="Race-Name"><router-link :to="{name: 'details', params: { id: race.index, url: race.url }}" class="links">{{ race.name }}</router-link></h3>
@@ -46,7 +46,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
   margin-top: 20px;
 }
 .Race_list {
@@ -58,6 +58,9 @@ export default {
 .Race {
   padding: 10px;
   font-size: 16px;
+}
+.Race-Name {
+  color: #fff;
 }
 .Race:hover {
     text-decoration: underline;
