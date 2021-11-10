@@ -6,7 +6,7 @@
     <div id="Race_details_container">
       <div class="Race_details">
         <div class="detail_container">
-            <h2>Race: {{ roledetails.name }}</h2>
+            <h2>Class: {{ roledetails.name }}</h2>
         </div>
         <div class="detail_container">
             <h2>Hit Dice: 1d{{ roledetails.hit_die }}</h2>
@@ -17,6 +17,10 @@
         <ul class="detail_container list_container"> <h3>Class Proficiencies: </h3>
           <li v-for="proficiencies in roledetails.proficiencies" v-bind:key="proficiencies.index" class="list_items"><h3>{{ proficiencies.name }},</h3></li>
         </ul>
+        <ul class="detail_container list_container"> <h3>Starting Gear: </h3>
+          <li v-for="starting_equipment in roledetails.starting_equipment" v-bind:key="starting_equipment.index" class="list_items"><h3>{{ starting_equipment.quantity }} {{ starting_equipment.equipment.name }},</h3></li>
+        </ul>
+        
       </div>
       </div>
   </div>

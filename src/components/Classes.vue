@@ -41,17 +41,20 @@ export default {
 </script>
 <!-- styling for the component -->
 <style>
-.Race_list {
+#Title {
+  color: #fff;
+}
+.Class_list {
   display: flex;
   flex-direction: row;
   justify-content: center;
   list-style: none;
 }
-.Race {
+.Class {
   padding: 10px;
   font-size: 16px;
 }
-.Race:hover {
+.Class:hover {
     text-decoration: underline;
     cursor: pointer;
   }

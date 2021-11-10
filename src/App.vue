@@ -5,7 +5,6 @@
       <router-link v-bind:to="'/'">Home</router-link>
       <router-link v-bind:to="'/Races'">Races</router-link>
       <router-link v-bind:to="'/Classes'">Classes</router-link>
-      <router-link v-bind:to="'/Background'">Backgrounds</router-link>
       <router-link v-bind:to="'/Spells'">Spells</router-link>
   </div>
   <router-view></router-view>

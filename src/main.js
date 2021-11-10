@@ -22,10 +22,9 @@ import Racedetails from './components/Racedetails'
 //import the Classes component
 import Classes from './components/Classes'
 import Classdetails from './components/Classdetails'
-//import the Background component
-import Background from './components/Background'
 //import the Spells component
 import Spells from './components/Spells'
+import Spelldetails from './components/Spelldetails'
 //define your routes
 const routes = [
 //route for the home route of the web page
@@ -34,8 +33,6 @@ const routes = [
 { path: '/races', component: Races },
 //route for the Classes route of the web page
 { path: '/classes', component: Classes },
-//route for the Background route of the web page
-{ path: '/background', component: Background },
 //route for the Spells route of the web page
 { path: '/spells', component: Spells },
 {
@@ -51,6 +48,12 @@ const routes = [
   id:'class', 
   props: true,
   component: Classdetails
+},
+{
+  path: '/spelldetails/:id',
+  name: 'spelldetails',
+  props: true,
+  component: Spelldetails
 }
 ]
 
