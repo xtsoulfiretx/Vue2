@@ -5,24 +5,31 @@
     </div>
     <div id="Spell_details_container">
       <div class="Spell_details">
-        <div class="detail_container"><h2>Race: {{ details.name }}</h2></div>
-        <ul class="detail_container list_container"> <h3>Ability score increases: </h3>
-          <li v-for="ability_bonuses in details.ability_bonuses" v-bind:key="ability_bonuses.index" class="list_items"><h3>{{ ability_bonuses.ability_score.name }} +{{ability_bonuses.bonus}}</h3></li>
+        <div class="detail_container"><h2>Spell: {{ details.name }}</h2></div>
+        <div v-if="details.level == 0" class="detail_container"><h2>Spell Level: Cantrip</h2></div>
+        <div v-if="details.level != 0" class="detail_container"><h2>Spell Level: {{ details.level }}</h2></div>
+        <div v-if="details.attack_type" class="detail_container"><h3>Attack Type: {{ details.attack_type }}</h3></div>
+        <div class="detail_container"><h3>Casting Time: {{ details.casting_time }}</h3></div>
+        <div class="detail_container"><h3>Range: {{ details.range }}</h3></div>
+        <div v-if="details.dc" class="detail_container"><h3>Saving Throw: {{ details.dc.dc_type.name }}</h3></div>
+        <ul class="detail_container list_container"> <h3>Spell Components: </h3>
+          <li v-for="components in details.components" v-bind:key="components.index" class="list_items"><h3>{{ components }}</h3></li>
         </ul>
-        <div class="detail_container"><h3>Age: {{ details.age }}</h3></div>
-        <div class="detail_container"><h3>Size: {{ details.size }}</h3></div>
-        <div class="detail_container"><h3>Size Description: {{ details.size_description }}</h3></div>
-        <div class="detail_container"><h3>Speed: {{ details.speed }}ft</h3></div>
-        <div class="detail_container"><h3>Alignment: {{ details.alignment }}</h3></div>
-        <div class="detail_container"><h3>Language: {{ details.language_desc }}</h3></div>
-        <ul class="detail_container list_container"> <h3>Languages known: </h3>
-          <li v-for="languages in details.languages" v-bind:key="languages.index" class="list_items"><h3>{{ languages.name }},</h3></li>
+        <div v-if="details.material" class="detail_container"><h3>Material Cost: {{ details.material }}</h3></div>
+        <div class="detail_container"><h3>School of magic: {{ details.school.name }}</h3></div>
+        <div v-if="details.concentration" class="detail_container"><h3>Duration: Concentration, {{ details.duration }}</h3></div>
+        <div v-if="!details.concentration" class="detail_container"><h3>Duration: {{ details.duration }}</h3></div>
+        <div v-if="details.desc.length == 1" class="detail_container"><h3>Description: {{ details.desc[0] }}</h3></div>
+        <ul v-if="details.desc.length > 1" class="detail_container spell_list_container description_container"> <h3>Description: </h3>
+          <li v-for="(value, key, index) in details.desc" :key="`${ key }-${ index }`" class="spell_list_items"><h3 class="spell_description"> {{ value }} </h3></li>
         </ul>
-        <ul class="detail_container list_container"> <h3>Starting Proficiencies: </h3>
-          <li v-for="starting_proficiencies in details.starting_proficiencies" v-bind:key="starting_proficiencies.index" class="list_items"><h3>{{ starting_proficiencies.name }},</h3></li>
+        <div v-if="details.higher_level" class="detail_container"><h3>Casting at higher levels: {{ details.higher_level[0] }}</h3></div>
+        <div v-if="details.damage" class="detail_container"><h3>Damage Type: {{details.damage.damage_type.name}} Damage</h3></div>
+        <ul v-if="details.damage && details.damage.damage_at_character_level" class="detail_container list_container"> <h3>Damage at spell slot level: </h3>
+          <li v-for="(value, key, index) in details.damage.damage_at_character_level" :key="`${ key }-${ index }`" class="list_items"><h3>level {{ key }}: {{ value }}, </h3></li>
         </ul>
-        <ul class="detail_container list_container"> <h3>Trait: </h3>
-          <li v-for="trait in details.traits" v-bind:key="trait.index" class="list_items"><h3>{{ trait.name }},</h3></li>
+        <ul v-if="details.damage && details.damage.damage_at_slot_level" class="detail_container list_container"> <h3>Damage at spell slot level: </h3>
+          <li v-for="(value, key, index) in details.damage.damage_at_slot_level" :key="`${ key }-${ index }`" class="list_items"><h3>level {{ key }}: {{ value }}, </h3></li>
         </ul>
       </div>
       </div>
@@ -36,36 +43,7 @@ export default {
   data () {
     return {
       details: {
-          age: "",
-          ability_bonuses: {
-            0: {
-              ability_score: {
-                index: "",
-                name: "",
-                url: "",
-              },
-              bonus: 0
-            }
-          },
-          alignment: "",
-          index: "",
-          language_dec: "",
-          languages: [],
-          name: "",
-          size: "",
-          size_description: "",
-          speed: 0,
-          starting_proficiencies: [],
-          subraces: [],
-          traits:
-            {
-              0: {
-              index: "",
-              name: "",
-              url: ""
-              }
-            },
-          url: "",
+         
       }
     }
   },
@@ -92,6 +70,25 @@ export default {
   justify-content: flex-start;
   text-align: left;
   }
+.spell_list_container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+.spell_list_items {
+  padding: 0;
+}
+.spell_description {
+  padding: 0;
+  margin: 1px;
+}
+.description_container {
+  padding-bottom: 10px;
+}
 .list_container {
   list-style: none;
   display: flex;
