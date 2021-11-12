@@ -1,5 +1,8 @@
 <template>
-  
+  <div id="Hello">
+    <h1>Hello and welcome to my D&amp;D application.</h1>
+    <h2>Please click on one of the above links for more information.</h2>
+  </div>
 </template>
 
 <script>
